@@ -1,240 +1,85 @@
-from weasyprint import HTML
-
-# Content for the PDF based on the presentation outline
-html_content = """
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk | PT Astro Star Indonesia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
-        @page {
-            size: A4;
-            margin: 20mm 15mm;
-            background-color: #ffffff;
-        }
+        /* Definisi Font Merriweather */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
+            font-family: 'Merriweather', serif;
         }
-        .header-banner {
-            background-color: #1a5276;
-            color: white;
-            padding: 30pt 20pt;
-            text-align: center;
-            margin-bottom: 30pt;
+
+        /* Animasi Meteor Khusus */
+        @keyframes meteor {
+            0% { transform: translate(100px, -100px) rotate(45deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(-800px, 800px) rotate(45deg); opacity: 0; }
         }
-        h1 {
-            font-size: 24pt;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        .student-info {
-            font-size: 12pt;
-            margin-top: 10pt;
-        }
-        .slide-container {
-            margin-bottom: 40pt;
-            page-break-inside: avoid;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20pt;
-        }
-        h2 {
-            color: #1a5276;
-            font-size: 16pt;
-            border-left: 5px solid #1a5276;
-            padding-left: 10pt;
-            margin-bottom: 15pt;
-        }
-        h3 {
-            color: #2471a3;
-            font-size: 13pt;
-            margin-top: 15pt;
-        }
-        p, li {
-            font-size: 11pt;
-            text-align: justify;
-        }
-        ul {
-            margin-left: 20pt;
-        }
-        .formula-box {
-            background-color: #f4f6f7;
-            border: 1px solid #d5dbdb;
-            padding: 10pt;
-            margin: 10pt 0;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            text-align: center;
-        }
-        .example-box {
-            background-color: #ebf5fb;
-            border-left: 5px solid #3498db;
-            padding: 15pt;
-            margin: 15pt 0;
-        }
-        .solution-box {
-            background-color: #f9f9f9;
-            border: 1px dotted #3498db;
-            padding: 15pt;
-            margin: 15pt 0;
-        }
-        .reference-section {
-            margin-top: 50pt;
-        }
-        .footer {
-            text-align: center;
-            font-size: 9pt;
-            color: #777;
-            margin-top: 20pt;
+
+        .animate-meteor-diagonal {
+            animation: meteor 3s linear infinite;
         }
     </style>
 </head>
-<body>
-    <div class="header-banner">
-        <h1>Kerangka Presentasi UTS Manajemen Keuangan II</h1>
-        <div class="student-info">
-            Adji Suryana | NIM: 8412124019 | Absen: Ganjil<br>
-            Program Studi Manajemen - Universitas Insan Cendekia Mandiri
+<body class="bg-black min-h-screen flex items-center justify-center p-4">
+
+    <div class="relative overflow-hidden bg-slate-900 text-white rounded-xl shadow-2xl max-w-md w-full border border-slate-700">
+        
+        <div class="absolute top-0 right-0 w-full h-full pointer-events-none">
+            <div class="absolute top-[-50px] right-[-50px] w-[2px] h-[100px] bg-gradient-to-b from-white to-transparent animate-meteor-diagonal shadow-[0_0_10px_#ffffff]"></div>
+        </div>
+
+        <div class="w-full h-64 bg-slate-800 flex items-center justify-center relative z-10 border-b border-slate-700">
+            <div class="text-center px-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-slate-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span class="text-slate-400 italic block text-sm">Visual Digital Spotting Scope</span>
+            </div>
+        </div>
+
+        <div class="p-8 relative z-10">
+            <h3 class="text-2xl font-bold mb-4 tracking-tight text-blue-400">Digital Spotting Scope</h3>
+            
+            <p class="text-slate-300 text-sm leading-relaxed mb-8">
+                Instrumen observasi optik presisi tinggi yang dirancang untuk pengamatan jarak jauh yang tajam dan jernih. 
+                Dilengkapi dengan sistem lensa multi-coated untuk transmisi cahaya maksimal, cocok untuk observasi alam maupun kebutuhan pemantauan tingkat lanjut di berbagai kondisi pencahayaan.
+            </p>
+
+            <div class="space-y-3 mb-8 text-xs text-slate-400">
+                <div class="flex items-center">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                    Optik Multi-Coated Berkualitas Tinggi
+                </div>
+                <div class="flex items-center">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                    Desain Ergonomis & Tahan Cuaca
+                </div>
+                <div class="flex items-center">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                    Kompatibel dengan Berbagai Tripod
+                </div>
+            </div>
+
+            <a href="https://wa.me/628123456789" target="_blank" 
+               class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-lg shadow-blue-900/20">
+                Hubungi Kami
+            </a>
+            
+            <p class="text-center text-[10px] text-slate-500 mt-4 uppercase tracking-widest">
+                PT Astro Star Indonesia
+            </p>
         </div>
     </div>
 
-    <div class="slide-container">
-        <h2>Slide 1: Halaman Judul</h2>
-        <ul>
-            <li><strong>Judul Utama:</strong> Analisis Leverage dan Risiko Penilaian Investasi dalam Manajemen Keuangan</li>
-            <li><strong>Sub-judul:</strong> Evaluasi Ketidakpastian Arus Kas dan Risiko Proyek</li>
-            <li><strong>Identitas:</strong> Adji Suryana (NIM: 8412124019)</li>
-            <li><strong>Konteks:</strong> Ujian Tengah Semester Genap 2025/2026 - Mata Kuliah Manajemen Keuangan II</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 2: Pengantar Materi</h2>
-        <p>Presentasi ini akan membedah dua instrumen krusial dalam pengambilan keputusan finansial korporasi:</p>
-        <ul>
-            <li><strong>Leverage:</strong> Optimalisasi biaya tetap untuk memaksimalkan profitabilitas.</li>
-            <li><strong>Risiko Investasi:</strong> Manajemen ketidakpastian dalam proyeksi keuangan masa depan.</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 3: Konsep Dasar Leverage</h2>
-        <p>Leverage adalah penggunaan aset atau dana dengan beban tetap untuk meningkatkan potensi imbal hasil bagi pemegang saham.</p>
-        <ul>
-            <li><strong>Operating Leverage:</strong> Terkait biaya operasi tetap. Mengukur sensitivitas Laba Operasi (EBIT) terhadap Penjualan.</li>
-            <li><strong>Financial Leverage:</strong> Terkait bunga hutang. Mengukur sensitivitas Laba per Saham (EPS) terhadap EBIT.</li>
-            <li><strong>Total Leverage:</strong> Efek gabungan yang mengukur sensitivitas EPS terhadap Penjualan.</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 4: Degree of Operating Leverage (DOL)</h2>
-        <p>DOL menunjukkan persentase perubahan EBIT akibat persentase perubahan unit penjualan.</p>
-        <div class="formula-box">
-            DOL = [Q(P - V)] / [Q(P - V) - F]
-        </div>
-        <p>Keterangan: Q = Kuantitas, P = Harga, V = Biaya Variabel, F = Biaya Tetap Operasi.</p>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 5: Degree of Financial Leverage (DFL) & Total Leverage (DTL)</h2>
-        <h3>DFL (Financial):</h3>
-        <div class="formula-box">DFL = EBIT / (EBIT - I)</div>
-        <h3>DTL (Total):</h3>
-        <div class="formula-box">DTL = DOL x DFL</div>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 6 & 7: Contoh Soal & Pembahasan Leverage</h2>
-        <div class="example-box">
-            <strong>Kasus: PT Astro Star Indonesia</strong><br>
-            Harga (P): 15jt | Biaya Variabel (V): 9jt | Biaya Tetap (F): 240jt | Bunga (I): 60jt | Q: 100 Unit.
-        </div>
-        <div class="solution-box">
-            <strong>Pembahasan:</strong><br>
-            1. EBIT = (100 x 15jt) - (100 x 9jt) - 240jt = 360jt<br>
-            2. DOL = 600jt / 360jt = 1.67<br>
-            3. DFL = 360jt / (360jt - 60jt) = 1.20<br>
-            4. DTL = 1.67 x 1.20 = 2.00
-        </div>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 8: Risiko Penilaian Investasi</h2>
-        <p>Setiap proyeksi arus kas memiliki unsur ketidakpastian. Risiko didefinisikan sebagai variabilitas atau deviasi antara hasil yang diharapkan dengan hasil aktual.</p>
-        <ul>
-            <li><strong>Stand-alone Risk:</strong> Risiko aset jika dianggap sebagai satu-satunya aset perusahaan.</li>
-            <li><strong>Corporate Risk:</strong> Dampak proyek terhadap stabilitas laba total perusahaan.</li>
-            <li><strong>Market Risk:</strong> Risiko yang tidak dapat didiversifikasi (risiko sistematis).</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 9: Pengukuran Risiko Secara Statistik</h2>
-        <h3>Expected Value:</h3>
-        <p>Rata-rata tertimbang dari hasil yang mungkin terjadi berdasarkan probabilitasnya.</p>
-        <h3>Standar Deviasi:</h3>
-        <p>Indikator kuantitatif sebaran risiko. Semakin tinggi nilainya, semakin besar risiko proyek.</p>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 10: Penyesuaian Risiko (RADR & CE)</h2>
-        <ul>
-            <li><strong>RADR (Risk-Adjusted Discount Rate):</strong> Menyesuaikan tingkat diskonto sesuai tingkat risiko proyek.</li>
-            <li><strong>Certainty Equivalent (CE):</strong> Menyesuaikan arus kas masa depan yang tidak pasti menjadi nilai yang setara dengan kepastian.</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 11: Analisis Skenario & Sensitivitas</h2>
-        <ul>
-            <li><strong>Analisis Sensitivitas:</strong> Mengukur dampak perubahan satu variabel (ceteris paribus) terhadap NPV.</li>
-            <li><strong>Analisis Skenario:</strong> Mengevaluasi dampak perubahan beberapa variabel sekaligus dalam kondisi Buruk, Normal, dan Baik.</li>
-        </ul>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 12 & 13: Contoh Soal & Pembahasan Risiko</h2>
-        <div class="example-box">
-            <strong>Skenario Investasi:</strong><br>
-            Awal: 500jt. Probabilitas:<br>
-            - Buruk (0.2): 300jt | Normal (0.6): 600jt | Baik (0.2): 900jt
-        </div>
-        <div class="solution-box">
-            <strong>Pembahasan:</strong><br>
-            1. Expected Value = (0.2*300) + (0.6*600) + (0.2*900) = 600jt<br>
-            2. Standar Deviasi = √[0.2*(300-600)^2 + 0.6*(600-600)^2 + 0.2*(900-600)^2] = Rp 189.736.659
-        </div>
-    </div>
-
-    <div class="slide-container">
-        <h2>Slide 14: Kesimpulan</h2>
-        <ol>
-            <li>Leverage berfungsi sebagai akselerator keuntungan namun meningkatkan profil risiko finansial perusahaan.</li>
-            <li>Manajemen harus memperhitungkan ketidakpastian arus kas melalui analisis statistik dan skenario untuk memitigasi kerugian investasi.</li>
-        </ol>
-    </div>
-
-    <div class="slide-container reference-section">
-        <h2>Slide 15: Daftar Pustaka</h2>
-        <p>1. Brigham, E. F., & Houston, J. F. (2019). <i>Fundamentals of Financial Management</i> (15th ed.). Cengage Learning.</p>
-        <p>2. Van Horne, J. C., & Wachowicz, J. M. (2012). <i>Fundamentals of Financial Management</i> (13th ed.). Pearson Education.</p>
-        <p>3. Gitman, L. J., & Zutter, C. J. (2015). <i>Principles of Managerial Finance</i> (14th ed.). Pearson.</p>
-        <p>4. Pedoman UTS Genap TA 2025/2026, Universitas Insan Cendekia Mandiri.</p>
-    </div>
-
-    <div class="footer">
-        Kerangka Presentasi UTS Manajemen Keuangan II - Adji Suryana (8412124019)
-    </div>
 </body>
 </html>
-"""
-
-# Output path
-pdf_path = "kerangka_presentasi_uts_adji_suryana.pdf"
-
-# Generate PDF
-HTML(string=html_content).write_pdf(pdf_path)
